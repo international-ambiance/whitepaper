@@ -18,10 +18,10 @@ IA-Token is a meme/community token that serves as a membership card to a global 
 ## Token Information
 
 - **Contract Address**: `0xe65c6a4eA43e45e69AA507d683b3468833FD07F2`
-- **Blockchain**: Ethereum (L1) + Base (L2)
+- **Blockchain**: Base (L2)
 - **Standard**: ERC-20
 - **Total Supply**: 1,000,000,000 IA (fixed)
-- **Etherscan**: [View on Etherscan](https://etherscan.io/token/0xe65c6a4eA43e45e69AA507d683b3468833FD07F2)
+- **Basescan**: [View on Basescan](https://basescan.org/token/0xe65c6a4eA43e45e69AA507d683b3468833FD07F2)
 
 ## Download
 
