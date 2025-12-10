@@ -15,6 +15,14 @@ IA-Token is a meme/community token that serves as a membership card to a global 
 
 **This is NOT an investment.** IA-Token is a utility/meme token with ZERO expectation of financial gain. The token has no intrinsic value and should only be acquired for community participation, governance, and event access.
 
+## Token Information
+
+- **Contract Address**: `0xe65c6a4eA43e45e69AA507d683b3468833FD07F2`
+- **Blockchain**: Ethereum (L1) + Base (L2)
+- **Standard**: ERC-20
+- **Total Supply**: 1,000,000,000 IA (fixed)
+- **Etherscan**: [View on Etherscan](https://etherscan.io/token/0xe65c6a4eA43e45e69AA507d683b3468833FD07F2)
+
 ## Download
 
 The latest compiled PDF is available in the [Releases](../../releases) section.
