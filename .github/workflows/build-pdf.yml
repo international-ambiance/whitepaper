@@ -1,0 +1,74 @@
+name: Build LaTeX PDF
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ia-token-whitepaper.tex
+          args: -pdf -interaction=nonstopmode -halt-on-error
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ia-token-whitepaper
+          path: ia-token-whitepaper.pdf
+          retention-days: 90
+
+      - name: Get version from tag
+        if: startsWith(github.ref, 'refs/tags/')
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ia-token-whitepaper.pdf
+          name: IA-Token Whitepaper ${{ steps.get_version.outputs.VERSION }}
+          body: |
+            # IA-Token Community Whitepaper ${{ steps.get_version.outputs.VERSION }}
+
+            Official whitepaper for IA-Token - A community-driven token for global culture, events, and collective action.
+
+            ## What's Inside
+
+            - Community benefits and event access
+            - Governance and voting mechanisms
+            - Tokenomics and distribution
+            - Technical architecture
+            - Real-world use cases
+            - Legal compliance and disclaimers
+
+            ## Important Notice
+
+            **This is NOT an investment.** IA-Token is a utility/meme token with ZERO expectation of financial gain. Please read the full whitepaper for details.
+
+            ## Download
+
+            Click the PDF file below to download the whitepaper.
+
+            ---
+
+            Built automatically via GitHub Actions on ${{ github.event.head_commit.timestamp }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
